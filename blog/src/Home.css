@@ -109,7 +109,7 @@ body {
 
 .game-page:hover {
   transform: scale(1.0); 
-  background-color: #007700; 
+  background-color: #004400; 
   z-index: 1; 
   opacity: 1;
 }

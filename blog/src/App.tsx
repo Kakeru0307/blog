@@ -32,13 +32,14 @@ function App() {
   return (
     <BrowserRouter>
       <div className='main-nav'>
-        <h2>Notes Of Days</h2>
         <div className="hamburger-menu-icon" onClick={toggleMenu}>
           <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
           <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div> 
           <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div> 
         </div>
+        <h2>Notes Of Days</h2>
       </div>
+
 
       <div className={`drawer-menu ${isMenuOpen ? 'open' : ''}`}>
         <nav>
