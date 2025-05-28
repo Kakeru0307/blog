@@ -1,0 +1,102 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.category-page-wrapper {
+  padding-top: var(--nav-height, 60px); 
+  background-color: #999; 
+  min-height: calc(100vh - var(--nav-height, 60px)); 
+  display: flex;
+  flex-direction: column;
+  color: #eee;
+  flex-grow: 1; 
+}
+
+.category-main-content {
+  flex-grow: 1; 
+  width: 100%; 
+  margin: 20px auto; /* 上下に余白、左右中央寄せ */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #2e2e2e; /* コンテンツ領域の背景色 */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  min-height: calc(100vh - var(--nav-height, 60px) - 40px - 20px - 20px); 
+}
+
+.category-page-title {
+  font-size: 2.8em;
+  color: #ffcc00;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 10px;
+}
+
+.category-content-area {
+  line-height: 1.8;
+  font-size: 1.1em;
+  width: 100%;
+  text-align: center; 
+}
+
+.category-content-area p {
+  margin-bottom: 1em;
+  text-align: center; 
+}
+
+.category-content-area ul {
+  list-style: disc;
+  /* margin-left: 20px; /* 左寄せのインデントをなくすか調整 */
+  margin: 0 auto; /* ULブロック自体を中央寄せにする */
+  padding-left: 0; /* デフォルトのパディングをリセット */
+  max-width: 80%; /* リストの最大幅を設定し、中央寄せを機能させる */
+  text-align: left; /* リスト内のテキストは左揃えに戻すことが多いが、必要に応じてcenterも可 */
+  /* display: inline-block; /* これを適用すると、ULがコンテンツの幅に縮まり、margin:autoで中央に寄せやすくなる */
+  /* width: fit-content; を使う手もある */
+}
+
+.category-content-area ul li {
+    padding-left: 0; /* リストアイテムのデフォルトパディングをリセット */
+    margin-left: 0; /* 必要に応じて、リストアイテムの左マージンも調整 */
+    text-align: left; /* リスト内のテキストは通常左揃えの方が読みやすい */
+    list-style-position: inside; /* 箇条書きの点をコンテンツボックスの内側に表示 */
+}
+
+
+/* フッター */
+.category-footer {
+  width: 100%;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #888;
+  text-align: center;
+  margin-top: auto; /* メインコンテンツが短い場合でも常に下部に配置 */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* レスポンシブデザイン */
+/* @media (max-width: 768px) {
+  .category-main-content {
+    padding: 15px;
+    margin: 10px auto;
+    min-height: calc(100vh - var(--nav-height, 60px) - 20px - 20px - 20px); 
+  }
+
+  .category-page-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .category-content-area {
+    font-size: 1em;
+  }
+
+  .category-content-area ul {
+    max-width: 95%; 
+  }
+} */

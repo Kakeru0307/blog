@@ -1,0 +1,289 @@
+/* 基本的なスタイルと変数定義 */
+:root {
+  --nav-height: 60px; /* ナビゲーションバーの高さ */
+}
+
+body {
+  width: 100%;
+  min-height: 100vh; /* bodyが最低でもビューポートの高さを持つように */
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #1a1a1a;
+  color: #eee;
+  overflow-x: hidden; /* 横スクロールバーを非表示に */
+
+  /* FlexboxでAppコンテナを縦方向に配置するための基盤 */
+  display: flex;
+  flex-direction: column;
+}
+
+#root, .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* アプリ全体が最低でもビューポートの高さを持つように */
+  width: 100%;
+}
+
+
+/* ナビゲーションバー */
+.main-nav {
+  width: 100%;
+  height: var(--nav-height);
+  background-color: #000; /* 背景色を#222から#000に変更（より引き締まった印象に） */
+  color: #fff;
+  position: fixed; /* 画面上部に固定 */
+  top: 0;
+  left: 0;
+  padding: 0 20px;
+  z-index: 1000; /* 他の要素より手前に表示 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* 影を濃くして立体感を出す */
+
+  display: flex; /* Flexコンテナ */
+  align-items: center; /* 縦方向の中央揃え */
+}
+
+/* ナビゲーションバーのタイトル */
+.main-nav h2 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-60%); 
+  text-align: center;
+  margin: 0;
+}
+/* ハンバーガーメニューアイコン */
+.hamburger-menu-icon {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1001;
+  flex-shrink: 0; /* 縮まないようにする */
+}
+
+.hamburger-menu-icon .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* ハンバーガーアイコンが開いたときの状態 */
+.hamburger-menu-icon .bar:nth-child(1).open {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger-menu-icon .bar:nth-child(2).open {
+  opacity: 0; /* 中央のバーを非表示 */
+}
+
+.hamburger-menu-icon .bar:nth-child(3).open {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* ドロワーメニュー (サイドから出てくるメニュー) */
+.drawer-menu {
+  position: fixed;
+  top: var(--nav-height); /* ナビゲーションバーの下から開始 */
+  left: -250px; /* 初期状態では画面外に隠す */
+  width: 250px;
+  height: calc(100vh - var(--nav-height)); /* 画面の残り高さ */
+  background-color: #333;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: left 0.3s ease;
+  z-index: 999; /* オーバーレイより上に */
+  padding-top: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* メニュー内容が長い場合にスクロール可能に */
+}
+
+.drawer-menu.open {
+  left: 0; /* 開いたときに表示 */
+}
+
+.drawer-menu nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* リンクを左寄せ */
+}
+
+.drawer-menu nav a {
+  color: #eee;
+  text-decoration: none;
+  padding: 15px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.drawer-menu nav a:hover {
+  background-color: #555;
+  color: #ffcc00;
+}
+
+/* オーバーレイ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998; /* ドロワーメニューより下に */
+}
+
+
+/* その他の汎用的なスタイル（既存のものを整理） */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* a:nth-of-type(2) .logo { */ /* 特定のロゴへのアニメーションなので調整が必要かも */
+    /* animation: logo-spin infinite 20s linear; */
+  /* } */
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  /* モバイル表示時 */
+  .hamburger-menu-icon {
+    display: flex; /* モバイルではハンバーガーアイコンを表示 */
+    margin-right: auto; /* 左端に寄せる */
+  }
+
+  .main-nav h2 {
+    margin: 0 auto;
+    position: static;
+    transform: translateX(-65%);
+  }
+
+
+}
+
+
+/* CategoryPageLayout.css の内容を App.css に追記する場合 */
+/* もしくは CategoryPageLayout.css として別途インポート */
+.category-page-wrapper {
+  padding-top: var(--nav-height, 60px); /* ナビゲーションバーの高さ分だけ下にずらす */
+  background-color: #222;
+  min-height: calc(100vh - var(--nav-height, 60px)); /* ナビゲーションバーを除いた最低高さをビューポートの高さに設定 */
+  display: flex;
+  flex-direction: column;
+  color: #eee;
+  flex-grow: 1; /* 親の.AppがFlexコンテナの場合、利用可能なスペースを埋める */
+}
+
+.category-main-content {
+  flex-grow: 1; /* 残りのスペースを埋めるように拡張 */
+  width: 100%; /* 親要素の幅いっぱいに広がる */
+  max-width: 960px; /* ★コンテンツの最大幅をここで制御します★ */
+                       /* 左右に余白が必要なければこの行を削除するか、100%にしてください */
+  margin: 20px auto; /* 上下に余白、左右中央寄せ */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #2e2e2e; /* コンテンツ領域の背景色 */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  min-height: 50vh; /* コンテンツが少ない場合の最低限の高さ。画面の高さに応じて調整 */
+}
+
+.category-page-title {
+  font-size: 2.8em;
+  color: #ffcc00;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 10px;
+}
+
+.category-content-area {
+  line-height: 1.8;
+  font-size: 1.1em;
+  width: 100%;
+  text-align: center; /* ★テキストを中央揃えにする★ */
+}
+
+.category-content-area p {
+  margin-bottom: 1em;
+  text-align: center; /* Pタグ内のテキストも確実に中央揃えにする */
+}
+
+.category-content-area ul {
+  list-style: disc;
+  margin: 0 auto; /* ULブロック自体を中央寄せにする */
+  padding-left: 0; /* デフォルトのパディングをリセット */
+  max-width: 80%; /* リストの最大幅を設定し、中央寄せを機能させる */
+  text-align: left; /* リスト内のテキストは通常左揃えの方が読みやすい */
+  list-style-position: inside; /* 箇条書きの点をコンテンツボックスの内側に表示 */
+}
+
+.category-content-area ul li {
+    padding-left: 0;
+    margin-left: 0;
+    text-align: left;
+}
+
+/* フッター */
+.category-footer {
+  width: 100%;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #888;
+  text-align: center;
+  margin-top: auto; /* メインコンテンツが短い場合でも常に下部に配置 */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* category page layoutのレスポンシブデザイン */
+@media (max-width: 768px) {
+  .category-main-content {
+    padding: 15px;
+    margin: 10px auto;
+    min-height: calc(100vh - var(--nav-height, 60px) - 20px - 20px - 20px);
+  }
+
+  .category-page-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  .category-content-area {
+    font-size: 1em;
+  }
+
+  .category-content-area ul {
+    max-width: 95%;
+  }
+}
