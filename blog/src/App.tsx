@@ -5,6 +5,7 @@ import Home from "./Home"
 import Skill from "./skill"
 import Life from "./life"
 import Game from "./game"
+import NewPost from './NewPostPage'
 import Icon from './IconFadeIn';
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Link to="/skill" onClick={handleMenuItemClick}>Skill</Link>
           <Link to="/life" onClick={handleMenuItemClick}>Life</Link>
           <Link to="/game" onClick={handleMenuItemClick}>Game</Link>
+          <Link to='/new-post' onClick={handleMenuItemClick}>new-post</Link>
         </nav>
       </div>
       
@@ -57,6 +59,7 @@ function App() {
         <Route path="/skill" element={<Skill />} />
         <Route path='/life' element={<Life />}/>
         <Route path='/game' element={<Game />}/>
+        <Route path='/new-post' element={<NewPost />}/>
       </Routes>
     </BrowserRouter>
   )
